@@ -15,7 +15,7 @@ class Game(models.Model):
     publisher = models.ManyToManyField("misc.Publisher")
     developer = models.ManyToManyField("misc.Developer")
     platform = models.ManyToManyField("misc.Platform")
-    badges = models.ManyToManyField("misc.Badges")
+    badges = models.ManyToManyField("misc.Badge")
     photo = models.URLField(max_length=1000, null=True, blank=True)
     video = models.URLField(max_length=1000, null=True, blank=True)
     usd_price = models.FloatField()

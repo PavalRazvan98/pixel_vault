@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from apps.misc.models import Publisher, Developer, Platform, Genre, Feature, Badges
+from apps.misc.models import Publisher, Developer, Platform, Genre, Feature, Badge
 
 
 class Command(BaseCommand):
@@ -99,18 +99,18 @@ class Command(BaseCommand):
             ]
             Feature.objects.bulk_create(features)
 
-        if Badges.objects.count():
+        if Badge.objects.count():
             self.stdout.write(
-                "There are `Badges` in the database, going to use them."
+                "There are `Badge` in the database, going to use them."
             )
         else:
-            badges = [
-                Badges(name="Best Game"),
-                Badges(name="Editor’s Choice"),
-                Badges(name="New Release"),
-                Badges(name="Top Rated"),
-                Badges(name="Most Anticipated Game"),
-                Badges(name="Game of the Year"),
-                Badges(name="Early Access")
+            Badge = [
+                Badge(name="Best Game"),
+                Badge(name="Editor’s Choice"),
+                Badge(name="New Release"),
+                Badge(name="Top Rated"),
+                Badge(name="Most Anticipated Game"),
+                Badge(name="Game of the Year"),
+                Badge(name="Early Access")
             ]
-            Badges.objects.bulk_create(badges)
+            Badge.objects.bulk_create(Badge)

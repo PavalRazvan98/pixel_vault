@@ -3,7 +3,7 @@ from datetime import date
 from django.core.management.base import BaseCommand
 
 from apps.games.models import Game, SystemRequirement
-from apps.misc.models import Genre, Feature, Publisher, Developer, Platform, Badges
+from apps.misc.models import Genre, Feature, Publisher, Developer, Platform, Badge
 
 
 class Command(BaseCommand):
@@ -37,8 +37,8 @@ class Command(BaseCommand):
             xbox_one_platform = Platform.objects.get(name="Xbox One")
             pc_platform = Platform.objects.get(name="PC")
 
-            best_game_badge = Badges.objects.get(name="Best Game")
-            most_anticipated_badge = Badges.objects.get(name="Most Anticipated Game")
+            best_game_badge = Badge.objects.get(name="Best Game")
+            most_anticipated_badge = Badge.objects.get(name="Most Anticipated Game")
 
             games = [
                 {
@@ -52,7 +52,7 @@ class Command(BaseCommand):
                     "publisher": [naughty_dog_publisher],
                     "developer": [naughty_dog_developer],
                     "platform": [playstation_4_platform],
-                    "badges": [best_game_badge],
+                    "Badge": [best_game_badge],
                     "photo": "https://example.com/photo1.jpg",
                     "video": "https://example.com/video1.mp4",
                     "usd_price": 59.99
@@ -68,7 +68,7 @@ class Command(BaseCommand):
                     "publisher": [cd_projekt_publisher],
                     "developer": [cd_projekt_developer],
                     "platform": [pc_platform, playstation_4_platform],
-                    "badges": [most_anticipated_badge],
+                    "Badge": [most_anticipated_badge],
                     "photo": "https://example.com/photo2.jpg",
                     "video": "https://example.com/video2.mp4",
                     "usd_price": 59.99
@@ -84,7 +84,7 @@ class Command(BaseCommand):
                     "publisher": [cd_projekt_publisher],
                     "developer": [cd_projekt_developer],
                     "platform": [pc_platform, playstation_4_platform],
-                    "badges": [best_game_badge],
+                    "Badge": [best_game_badge],
                     "photo": "https://example.com/photo3.jpg",
                     "video": "https://example.com/video3.mp4",
                     "usd_price": 39.99
@@ -100,7 +100,7 @@ class Command(BaseCommand):
                     "publisher": [rockstar_publisher],
                     "developer": [rockstar_developer],
                     "platform": [pc_platform, playstation_4_platform, xbox_one_platform],
-                    "badges": [best_game_badge],
+                    "Badge": [best_game_badge],
                     "photo": "https://example.com/photo4.jpg",
                     "video": "https://example.com/video4.mp4",
                     "usd_price": 59.99
@@ -116,7 +116,7 @@ class Command(BaseCommand):
                     "publisher": [bethesda_publisher],
                     "developer": [bethesda_developer],
                     "platform": [pc_platform, playstation_4_platform, xbox_one_platform],
-                    "badges": [best_game_badge],
+                    "Badge": [best_game_badge],
                     "photo": "https://example.com/photo5.jpg",
                     "video": "https://example.com/video5.mp4",
                     "usd_price": 49.99
@@ -132,7 +132,7 @@ class Command(BaseCommand):
                     "publisher": [naughty_dog_publisher],
                     "developer": [naughty_dog_developer],
                     "platform": [playstation_4_platform],
-                    "badges": [best_game_badge],
+                    "Badge": [best_game_badge],
                     "photo": "https://example.com/photo6.jpg",
                     "video": "https://example.com/video6.mp4",
                     "usd_price": 39.99
@@ -148,7 +148,7 @@ class Command(BaseCommand):
                     "publisher": [naughty_dog_publisher],
                     "developer": [naughty_dog_developer],
                     "platform": [playstation_4_platform],
-                    "badges": [best_game_badge],
+                    "Badge": [best_game_badge],
                     "photo": "https://example.com/photo7.jpg",
                     "video": "https://example.com/video7.mp4",
                     "usd_price": 49.99
@@ -164,7 +164,7 @@ class Command(BaseCommand):
                     "publisher": [naughty_dog_publisher],
                     "developer": [naughty_dog_developer],
                     "platform": [playstation_4_platform],
-                    "badges": [best_game_badge],
+                    "Badge": [best_game_badge],
                     "photo": "https://example.com/photo8.jpg",
                     "video": "https://example.com/video8.mp4",
                     "usd_price": 59.99
@@ -188,7 +188,7 @@ class Command(BaseCommand):
                 game.publisher.set(game_data["publisher"])
                 game.developer.set(game_data["developer"])
                 game.platform.set(game_data["platform"])
-                game.badges.set(game_data["badges"])
+                game.Badge.set(game_data["Badge"])
 
                 self.stdout.write(f'Successfully added game: {game.title}')
 

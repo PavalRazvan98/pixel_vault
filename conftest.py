@@ -1,22 +1,23 @@
-from datetime import timedelta
-import random
-
-import pytest
 import factory
+import pytest
 
-from apps.games.models import Game
-from apps.interactions.models import Session
-from apps.misc.models import Genre, Publisher, Developer, Platform, Feature, Badges
+from apps.misc.models import Publisher, Developer, Platform, Feature, Badge
+from fixtures.factories import GenreFactory
+from fixtures.factories.misc import PublisherFactory, BadgeFactory
 
 
-# Genre
 @pytest.fixture(scope='session')
 def genre_factory():
-    class GenreFactory(factory.django.DjangoModelFactory):
-        class Meta:
-            model = Genre
-
     return GenreFactory
+
+
+@pytest.fixture(scope='session')
+def publisher_factory():
+    return PublisherFactory
+
+@pytest.fixture(scope='session')
+def badge_factory():
+    return BadgeFactory
 
 
 @pytest.fixture
@@ -47,6 +48,7 @@ def publishers(publisher_factory):
 @pytest.fixture
 def publisher(publisher_factory):
     return publisher_factory.create()
+
 
 # Developer
 @pytest.fixture(scope='session')
@@ -108,25 +110,24 @@ def feature(feature_factory):
     return feature_factory.create()
 
 
-# Badges
+# Badge
 @pytest.fixture(scope="session")
 def badges_factory():
     class BadgesFactory(factory.django.DjangoModelFactory):
         class Meta:
-            model = Badges
+            model = Badge
 
     return BadgesFactory
 
 
 @pytest.fixture
-def badges(badges_factory):
+def Badge(badges_factory):
     return badges_factory.create_batch(3)
 
 
 @pytest.fixture
 def badge(badges_factory):
     return badges_factory.create()
-
 
 # Games
 # @pytest.fixture(scope="session")
