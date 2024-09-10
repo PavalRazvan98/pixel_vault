@@ -1,5 +1,4 @@
 import factory
-from factory.base import T
 
 from apps.misc.choices import NationalityOptions, DeveloperEntity
 
@@ -10,13 +9,7 @@ class PublisherFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ('name',)
 
     name = factory.Faker('word')
-    # name = models.CharField(max_length=200, unique=True)
-    # name = 'd/asdasdas'
-    # nationality = factory.Faker('random_element', elements=NationalityOptions.choices)
-
-    @classmethod
-    def create(cls, **kwargs) -> T:
-        return super().create(**kwargs)
+    nationality = factory.Faker('random_element', elements=NationalityOptions)
 
 
 class DeveloperFactory(factory.django.DjangoModelFactory):
@@ -25,8 +18,8 @@ class DeveloperFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ('name',)
 
     name = factory.Faker('word')
-    nationality = factory.Faker('random_element', elements=NationalityOptions.choices)
-    entity = factory.Faker('random_element', elements=DeveloperEntity.choices)
+    nationality = factory.Faker('random_element', elements=NationalityOptions)
+    entity = factory.Faker('random_element', elements=DeveloperEntity)
 
 
 class PlatformFactory(factory.django.DjangoModelFactory):

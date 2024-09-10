@@ -1,3 +1,16 @@
-from .misc import GenreFactory, FeatureFactory, PlatformFactory
+from .misc import GenreFactory, FeatureFactory, PlatformFactory, PublisherFactory, DeveloperFactory, BadgeFactory
+from .games import GameFactory, SystemRequirementFactory
 
-__all__ = ('GenreFactory', 'FeatureFactory', 'PlatformFactory')
+__all__ = (
+    # Misc
+    'GenreFactory',
+    'FeatureFactory',
+    'PlatformFactory',
+    'BadgeFactory',
+    'DeveloperFactory',
+    'PublisherFactory',
+
+    # Games
+    'GameFactory',
+    'SystemRequirementFactory',
+)
