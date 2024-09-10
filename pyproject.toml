@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "pixel-vault"
+version = "0.1.0"
+description = ""
+authors = ["PavalRazvan98 <pavalrazvan98@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.1"
+faker = "^28.1.0"
+psycopg2 = "^2.9.9"
+
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.6.3"
+
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.27.0"
+python-dotenv = "^1.0.1"
+pytest-sugar = "^1.0.0"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.2"
+pytest-django = "^4.9.0"
+factory-boy = "^3.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
