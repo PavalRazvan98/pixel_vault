@@ -2,11 +2,11 @@ import pytest
 
 from fixtures.factories import (
     GenreFactory, PublisherFactory, BadgeFactory, DeveloperFactory, PlatformFactory, FeatureFactory, GameFactory,
-    SystemRequirementFactory
+    SystemRequirementFactory, RatingFactory, SessionFactory
 )
 
 
-# Factories
+
 @pytest.fixture(scope='session')
 def genre_factory():
     return GenreFactory
@@ -41,11 +41,22 @@ def feature_factory():
 def game_factory():
     return GameFactory
 
+
 @pytest.fixture(scope='session')
 def system_requirement_factory():
     return SystemRequirementFactory
 
 
+@pytest.fixture(scope='session')
+def rating_factory():
+    return RatingFactory
+
+
+@pytest.fixture(scope='session')
+def session_factory():
+    return SessionFactory
+
+# ? ?
 @pytest.fixture
 def genres(genre_factory):
     return genre_factory.create_batch(3)
@@ -97,10 +108,51 @@ def feature(feature_factory):
 
 
 @pytest.fixture
-def badges(badges_factory):
-    return badges_factory.create_batch(3)
+def badges(badge_factory):
+    return badge_factory.create_batch(3)
 
 
 @pytest.fixture
-def badge(badges_factory):
-    return badges_factory.create()
+def badge(badge_factory):
+    return badge_factory.create()
+
+
+@pytest.fixture
+def game(game_factory):
+    return game_factory.create()
+
+
+@pytest.fixture
+def games(game_factory):
+    return game_factory.create_batch(3)
+
+
+@pytest.fixture
+def system_requirement(system_requirement_factory):
+    return system_requirement_factory.create()
+
+
+@pytest.fixture
+def system_requirements(system_requirement_factory):
+    return system_requirement_factory.create_batch(3)
+
+
+@pytest.fixture
+def rating(rating_factory):
+    return rating_factory.create()
+
+
+@pytest.fixture
+def ratings(rating_factory):
+    return rating_factory.create_batch(3)
+
+
+@pytest.fixture
+def session(session_factory):
+    return session_factory.create()
+
+
+@pytest.fixture
+def sessions(session_factory):
+    return session_factory.create_batch(3)
+

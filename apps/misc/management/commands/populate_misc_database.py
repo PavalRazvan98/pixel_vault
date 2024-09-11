@@ -104,7 +104,7 @@ class Command(BaseCommand):
                 "There are `Badge` in the database, going to use them."
             )
         else:
-            Badge = [
+            badge = [
                 Badge(name="Best Game"),
                 Badge(name="Editor’s Choice"),
                 Badge(name="New Release"),
@@ -113,4 +113,4 @@ class Command(BaseCommand):
                 Badge(name="Game of the Year"),
                 Badge(name="Early Access")
             ]
-            Badge.objects.bulk_create(Badge)
+            Badge.objects.bulk_create(badge)

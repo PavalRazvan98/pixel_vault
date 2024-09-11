@@ -41,55 +41,59 @@ def test_populate_database():
 
 @pytest.mark.django_db
 def test_populate_database__skip_publisher(publishers):
-
     call_command("populate_database")
     assert Publisher.objects.count() == 3
 
 
 @pytest.mark.django_db
 def test_populate_database__skip_genre(genres):
-
     call_command("populate_database")
     assert Genre.objects.count() == 3
 
 
 @pytest.mark.django_db
 def test_populate_database__skip_developer(developers):
-
     call_command("populate_database")
     assert Developer.objects.count() == 3
 
 
 @pytest.mark.django_db
 def test_populate_database__skip_platform(platforms):
-
     call_command("populate_database")
     assert Platform.objects.count() == 3
 
 
 @pytest.mark.django_db
 def test_populate_database__skip_feature(features):
-
     call_command("populate_database")
     assert Feature.objects.count() == 3
 
 
 @pytest.mark.django_db
-def test_populate_database__skip_badges(Badge):
-
+def test_populate_database__skip_badges(badges):
     call_command("populate_database")
     assert Badge.objects.count() == 3
 
 
 @pytest.mark.django_db
-def test_populate_database__skip_feature(features):
-
+def test_populate_database__skip_game(games):
     call_command("populate_database")
-    assert Feature.objects.count() == 3
+    assert Game.objects.count() == 3
 
 
-# @pytest.mark.django_db
-# def test_populate_database__skip_game(games):
-#
-#     call_command("populate_database")
-#     assert Game.objects.count() == 3
+@pytest.mark.django_db
+def test_populate_database__skip_system_requirement(system_requirements):
+    call_command("populate_database")
+    assert SystemRequirement.objects.count() == 3
+
+
+@pytest.mark.django_db
+def test_populate_database__skip_rating(ratings):
+    call_command("populate_database")
+    assert Rating.objects.count() == 3
+
+
+@pytest.mark.django_db
+def test_populate_database__skip_session(sessions):
+    call_command("populate_database")
+    assert Session.objects.count() == 3

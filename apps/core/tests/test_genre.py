@@ -6,9 +6,10 @@ from apps.games.models import Game
 @pytest.mark.django_db
 def test_genre(genre_factory, publisher_factory, badge_factory, game_factory, system_requirement_factory):
     genre_factory.create()
-    p1 = publisher_factory.create()
+    p1 = publisher_factory.create(name="123")
     p2 = publisher_factory.create()
 
+    assert p1.name == "123"
     assert p1.name != p2.name
 
     g = game_factory.create(publishers=[p1, p2])

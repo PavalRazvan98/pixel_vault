@@ -49,10 +49,10 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2020, 6, 19),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
-                    "Badge": [best_game_badge],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
+                    "badges": [best_game_badge],
                     "photo": "https://example.com/photo1.jpg",
                     "video": "https://example.com/video1.mp4",
                     "usd_price": 59.99
@@ -65,10 +65,10 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2020, 12, 10),
                     "long_description": "",
-                    "publisher": [cd_projekt_publisher],
-                    "developer": [cd_projekt_developer],
-                    "platform": [pc_platform, playstation_4_platform],
-                    "Badge": [most_anticipated_badge],
+                    "publishers": [cd_projekt_publisher],
+                    "developers": [cd_projekt_developer],
+                    "platforms": [pc_platform, playstation_4_platform],
+                    "badges": [most_anticipated_badge],
                     "photo": "https://example.com/photo2.jpg",
                     "video": "https://example.com/video2.mp4",
                     "usd_price": 59.99
@@ -81,10 +81,10 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2015, 5, 19),
                     "long_description": "",
-                    "publisher": [cd_projekt_publisher],
-                    "developer": [cd_projekt_developer],
-                    "platform": [pc_platform, playstation_4_platform],
-                    "Badge": [best_game_badge],
+                    "publishers": [cd_projekt_publisher],
+                    "developers": [cd_projekt_developer],
+                    "platforms": [pc_platform, playstation_4_platform],
+                    "badges": [best_game_badge],
                     "photo": "https://example.com/photo3.jpg",
                     "video": "https://example.com/video3.mp4",
                     "usd_price": 39.99
@@ -97,10 +97,10 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2018, 10, 26),
                     "long_description": "",
-                    "publisher": [rockstar_publisher],
-                    "developer": [rockstar_developer],
-                    "platform": [pc_platform, playstation_4_platform, xbox_one_platform],
-                    "Badge": [best_game_badge],
+                    "publishers": [rockstar_publisher],
+                    "developers": [rockstar_developer],
+                    "platforms": [pc_platform, playstation_4_platform, xbox_one_platform],
+                    "badges": [best_game_badge],
                     "photo": "https://example.com/photo4.jpg",
                     "video": "https://example.com/video4.mp4",
                     "usd_price": 59.99
@@ -113,10 +113,10 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2015, 11, 10),
                     "long_description": "",
-                    "publisher": [bethesda_publisher],
-                    "developer": [bethesda_developer],
-                    "platform": [pc_platform, playstation_4_platform, xbox_one_platform],
-                    "Badge": [best_game_badge],
+                    "publishers": [bethesda_publisher],
+                    "developers": [bethesda_developer],
+                    "platforms": [pc_platform, playstation_4_platform, xbox_one_platform],
+                    "badges": [best_game_badge],
                     "photo": "https://example.com/photo5.jpg",
                     "video": "https://example.com/video5.mp4",
                     "usd_price": 49.99
@@ -129,10 +129,10 @@ class Command(BaseCommand):
                     "pegi_rating": 16,
                     "release_date": date(2017, 2, 28),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
-                    "Badge": [best_game_badge],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
+                    "badges": [best_game_badge],
                     "photo": "https://example.com/photo6.jpg",
                     "video": "https://example.com/video6.mp4",
                     "usd_price": 39.99
@@ -145,10 +145,10 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2018, 4, 20),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
-                    "Badge": [best_game_badge],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
+                    "badges": [best_game_badge],
                     "photo": "https://example.com/photo7.jpg",
                     "video": "https://example.com/video7.mp4",
                     "usd_price": 49.99
@@ -161,10 +161,10 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2019, 11, 8),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
-                    "Badge": [best_game_badge],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
+                    "badges": [best_game_badge],
                     "photo": "https://example.com/photo8.jpg",
                     "video": "https://example.com/video8.mp4",
                     "usd_price": 59.99
@@ -185,10 +185,10 @@ class Command(BaseCommand):
                 )
                 game.genres.set(game_data["genres"])
                 game.features.set(game_data["features"])
-                game.publisher.set(game_data["publisher"])
-                game.developer.set(game_data["developer"])
-                game.platform.set(game_data["platform"])
-                game.Badge.set(game_data["Badge"])
+                game.publishers.set(game_data["publishers"])
+                game.developers.set(game_data["developers"])
+                game.platforms.set(game_data["platforms"])
+                game.badges.set(game_data["badges"])
 
                 self.stdout.write(f'Successfully added game: {game.title}')
 
