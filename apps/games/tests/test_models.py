@@ -3,6 +3,8 @@ def test_system_requirement_memory(system_requirement_factory):
     assert system_requirement_factory.build(memory_mb=1024).memory == "1.0 GB"
     assert system_requirement_factory.build(memory_mb=8540).memory == "8.33984375 GB"
     assert system_requirement_factory.build(memory_mb=50000).memory == "48.828125 GB"
+    assert system_requirement_factory.build(memory_mb=0).memory == "None"
+    assert system_requirement_factory.build(memory_mb=None).memory == "None"
 
 
 def test_system_requirement_storage(system_requirement_factory):
@@ -10,3 +12,5 @@ def test_system_requirement_storage(system_requirement_factory):
     assert system_requirement_factory.build(storage_mb=1024).storage == "1.0 GB"
     assert system_requirement_factory.build(storage_mb=8540).storage == "8.33984375 GB"
     assert system_requirement_factory.build(storage_mb=50000).storage == "48.828125 GB"
+    assert system_requirement_factory.build(storage_mb=0).storage == "None"
+    assert system_requirement_factory.build(storage_mb=None).storage == "None"

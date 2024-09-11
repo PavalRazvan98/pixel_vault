@@ -47,14 +47,20 @@ class SystemRequirement(models.Model):
 
     @property
     def memory(self):
-        if self.memory_mb < 1024:
-            return f"{self.memory_mb} MB"
+        if self.memory_mb == None or self.memory_mb == 0:
+            return "None"
         else:
-            return f"{self.memory_mb / 1024} GB"
+            if self.memory_mb < 1024:
+                return f"{self.memory_mb} MB"
+            else:
+                return f"{self.memory_mb / 1024} GB"
 
     @property
     def storage(self):
-        if self.storage_mb < 1024:
-            return f"{self.storage_mb} MB"
+        if self.storage_mb == None or self.storage_mb ==0:
+            return "None"
         else:
-            return f"{self.storage_mb / 1024} GB"
+            if self.storage_mb < 1024:
+                return f"{self.storage_mb} MB"
+            else:
+                return f"{self.storage_mb / 1024} GB"
