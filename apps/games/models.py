@@ -32,20 +32,33 @@ class Game(models.Model):
     def release_year(self):
         return self.release_date.year
 
+
 class SystemRequirement(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     type = models.CharField(max_length=20, choices=TypeOptions)
     os = models.CharField(max_length=100)
     processor = models.CharField(max_length=100)
-    # TODO: This should be renamed to `memory_mb` and is going to be an IntegerField
-    memory = models.CharField(max_length=100)
-    # TODO: This should be renamed to `storage_mb` and is going to be an IntegerField
-    storage = models.CharField(max_length=100)
+    memory_mb = models.IntegerField()
+    storage_mb = models.IntegerField()
     graphics = models.CharField(max_length=1500)
 
     # TODO: Create two properties for this, memory & storage, which will return a string
     #   e.g. if storage_mb is between 0 and 1023 return a string like 240 MB,
-    #   if it's bigger than 1023, return it like this 1.7 GB. Same for Memory
+    #   if it's bigger than 1023, return it like this 1.7 GB. Same for memory
 
     class Meta:
         unique_together = ("game", "type", "os")
+
+    @property
+    def memory_display(self):
+        if self.memory_mb < 1024:
+            return f"{self.memory_mb} MB"
+        else:
+            return f"{self.memory_mb / 1024} GB"
+
+    @property
+    def storage_display(self):
+        if self.storage_mb < 1024:
+            return f"{self.storage_mb} MB"
+        else:
+            return f"{self.storage_mb / 1024} GB"

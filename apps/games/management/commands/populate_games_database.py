@@ -201,17 +201,17 @@ class Command(BaseCommand):
             game2 = Game.objects.get(title="Cyberpunk 2077")
             game3 = Game.objects.get(title="The Witcher 3: Wild Hunt")
             system_requirements_data = [
-                SystemRequirement(game=game1, type="Minimum", os="Windows 10", processor="Intel Core i5-2500K",memory="8 GB RAM",
-                                  storage="100 GB available space", graphics="NVIDIA GeForce GTX 780"),
+                SystemRequirement(game=game1, type="Minimum", os="Windows 10", processor="Intel Core i5-2500K",memory_mb="8000",
+                                  storage_mb="10000", graphics="NVIDIA GeForce GTX 780"),
                 SystemRequirement(game=game1, type="Recommended", os="Windows 10", processor="Intel Core i7-4770K",
-                                  memory="16 GB RAM", storage="100 GB available space", graphics="NVIDIA GeForce GTX 1060"),
+                                  memory_mb="16000", storage_mb="10000", graphics="NVIDIA GeForce GTX 1060"),
                 SystemRequirement(game=game2, type="Minimum", os="Windows 10", processor="Intel Core i5-3570K",
-                                  memory="8 GB RAM", storage="70 GB available space", graphics="NVIDIA GeForce GTX 780"),
+                                  memory_mb="8000", storage_mb="7000", graphics="NVIDIA GeForce GTX 780"),
                 SystemRequirement(game=game2, type="Recommended", os="Windows 10", processor="Intel Core i7-4790",
-                                  memory="12 GB RAM", storage="70 GB available space", graphics="NVIDIA GeForce GTX 1060"),
+                                  memory_mb="12000", storage_mb="70000", graphics="NVIDIA GeForce GTX 1060"),
                 SystemRequirement(game=game3, type="Minimum", os="Windows 7", processor="Intel Core i5-2500K",
-                                  memory="6 GB RAM", storage="35 GB available space", graphics="NVIDIA GeForce GTX 660"),
+                                  memory_mb="6000", storage_mb="35000", graphics="NVIDIA GeForce GTX 660"),
                 SystemRequirement(game=game3, type="Recommended", os="Windows 10", processor="Intel Core i7-3770",
-                                  memory="8 GB RAM", storage="35 GB available space", graphics="NVIDIA GeForce GTX 770")
+                                  memory_mb="8000", storage_mb="35000", graphics="NVIDIA GeForce GTX 770")
             ]
             SystemRequirement.objects.bulk_create(system_requirements_data)
