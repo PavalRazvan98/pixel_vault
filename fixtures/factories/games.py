@@ -61,6 +61,6 @@ class SystemRequirementFactory(factory.django.DjangoModelFactory):
     type = factory.Faker('random_element', elements=TypeOptions)
     os = factory.Faker('word')
     processor = factory.Faker('word')
-    memory = factory.Faker('pyint')
-    storage = factory.Faker('pyint')
+    memory_mb = factory.Faker('pyint')
+    storage_mb = factory.Faker('pyint')
     graphics = factory.Faker('word')
