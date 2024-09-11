@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = "Populate the \"feedback\" database with sample ratings."
 
     def handle(self, *args, **kwargs):
-        if Rating.objects.count() >= 5 or User.objects.count() >= 20:
+        if Rating.objects.count() != 0:
             self.stdout.write(
                 "There are enough `Ratings in the database, going to use them. "
             )

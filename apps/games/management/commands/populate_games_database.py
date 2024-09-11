@@ -3,7 +3,7 @@ from datetime import date
 from django.core.management.base import BaseCommand
 
 from apps.games.models import Game, SystemRequirement
-from apps.misc.models import Genre, Feature, Publisher, Developer, Platform, Badges
+from apps.misc.models import Genre, Feature, Publisher, Developer, Platform, Badge
 
 
 class Command(BaseCommand):
@@ -37,8 +37,8 @@ class Command(BaseCommand):
             xbox_one_platform = Platform.objects.get(name="Xbox One")
             pc_platform = Platform.objects.get(name="PC")
 
-            best_game_badge = Badges.objects.get(name="Best Game")
-            most_anticipated_badge = Badges.objects.get(name="Most Anticipated Game")
+            best_game_badge = Badge.objects.get(name="Best Game")
+            most_anticipated_badge = Badge.objects.get(name="Most Anticipated Game")
 
             games = [
                 {
@@ -49,9 +49,9 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2020, 6, 19),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo1.jpg",
                     "video": "https://example.com/video1.mp4",
@@ -65,9 +65,9 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2020, 12, 10),
                     "long_description": "",
-                    "publisher": [cd_projekt_publisher],
-                    "developer": [cd_projekt_developer],
-                    "platform": [pc_platform, playstation_4_platform],
+                    "publishers": [cd_projekt_publisher],
+                    "developers": [cd_projekt_developer],
+                    "platforms": [pc_platform, playstation_4_platform],
                     "badges": [most_anticipated_badge],
                     "photo": "https://example.com/photo2.jpg",
                     "video": "https://example.com/video2.mp4",
@@ -81,9 +81,9 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2015, 5, 19),
                     "long_description": "",
-                    "publisher": [cd_projekt_publisher],
-                    "developer": [cd_projekt_developer],
-                    "platform": [pc_platform, playstation_4_platform],
+                    "publishers": [cd_projekt_publisher],
+                    "developers": [cd_projekt_developer],
+                    "platforms": [pc_platform, playstation_4_platform],
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo3.jpg",
                     "video": "https://example.com/video3.mp4",
@@ -97,9 +97,9 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2018, 10, 26),
                     "long_description": "",
-                    "publisher": [rockstar_publisher],
-                    "developer": [rockstar_developer],
-                    "platform": [pc_platform, playstation_4_platform, xbox_one_platform],
+                    "publishers": [rockstar_publisher],
+                    "developers": [rockstar_developer],
+                    "platforms": [pc_platform, playstation_4_platform, xbox_one_platform],
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo4.jpg",
                     "video": "https://example.com/video4.mp4",
@@ -113,9 +113,9 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2015, 11, 10),
                     "long_description": "",
-                    "publisher": [bethesda_publisher],
-                    "developer": [bethesda_developer],
-                    "platform": [pc_platform, playstation_4_platform, xbox_one_platform],
+                    "publishers": [bethesda_publisher],
+                    "developers": [bethesda_developer],
+                    "platforms": [pc_platform, playstation_4_platform, xbox_one_platform],
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo5.jpg",
                     "video": "https://example.com/video5.mp4",
@@ -129,9 +129,9 @@ class Command(BaseCommand):
                     "pegi_rating": 16,
                     "release_date": date(2017, 2, 28),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo6.jpg",
                     "video": "https://example.com/video6.mp4",
@@ -145,9 +145,9 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2018, 4, 20),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo7.jpg",
                     "video": "https://example.com/video7.mp4",
@@ -161,9 +161,9 @@ class Command(BaseCommand):
                     "pegi_rating": 18,
                     "release_date": date(2019, 11, 8),
                     "long_description": "",
-                    "publisher": [naughty_dog_publisher],
-                    "developer": [naughty_dog_developer],
-                    "platform": [playstation_4_platform],
+                    "publishers": [naughty_dog_publisher],
+                    "developers": [naughty_dog_developer],
+                    "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo8.jpg",
                     "video": "https://example.com/video8.mp4",
@@ -185,9 +185,9 @@ class Command(BaseCommand):
                 )
                 game.genres.set(game_data["genres"])
                 game.features.set(game_data["features"])
-                game.publisher.set(game_data["publisher"])
-                game.developer.set(game_data["developer"])
-                game.platform.set(game_data["platform"])
+                game.publishers.set(game_data["publishers"])
+                game.developers.set(game_data["developers"])
+                game.platforms.set(game_data["platforms"])
                 game.badges.set(game_data["badges"])
 
                 self.stdout.write(f'Successfully added game: {game.title}')
@@ -201,17 +201,17 @@ class Command(BaseCommand):
             game2 = Game.objects.get(title="Cyberpunk 2077")
             game3 = Game.objects.get(title="The Witcher 3: Wild Hunt")
             system_requirements_data = [
-                SystemRequirement(game=game1, type="Minimum", os="Windows 10", processor="Intel Core i5-2500K",memory="8 GB RAM",
-                                  storage="100 GB available space", graphics="NVIDIA GeForce GTX 780"),
+                SystemRequirement(game=game1, type="Minimum", os="Windows 10", processor="Intel Core i5-2500K",memory_mb="8000",
+                                  storage_mb="10000", graphics="NVIDIA GeForce GTX 780"),
                 SystemRequirement(game=game1, type="Recommended", os="Windows 10", processor="Intel Core i7-4770K",
-                                  memory="16 GB RAM", storage="100 GB available space", graphics="NVIDIA GeForce GTX 1060"),
+                                  memory_mb="16000", storage_mb="10000", graphics="NVIDIA GeForce GTX 1060"),
                 SystemRequirement(game=game2, type="Minimum", os="Windows 10", processor="Intel Core i5-3570K",
-                                  memory="8 GB RAM", storage="70 GB available space", graphics="NVIDIA GeForce GTX 780"),
+                                  memory_mb="8000", storage_mb="7000", graphics="NVIDIA GeForce GTX 780"),
                 SystemRequirement(game=game2, type="Recommended", os="Windows 10", processor="Intel Core i7-4790",
-                                  memory="12 GB RAM", storage="70 GB available space", graphics="NVIDIA GeForce GTX 1060"),
+                                  memory_mb="12000", storage_mb="70000", graphics="NVIDIA GeForce GTX 1060"),
                 SystemRequirement(game=game3, type="Minimum", os="Windows 7", processor="Intel Core i5-2500K",
-                                  memory="6 GB RAM", storage="35 GB available space", graphics="NVIDIA GeForce GTX 660"),
+                                  memory_mb="6000", storage_mb="35000", graphics="NVIDIA GeForce GTX 660"),
                 SystemRequirement(game=game3, type="Recommended", os="Windows 10", processor="Intel Core i7-3770",
-                                  memory="8 GB RAM", storage="35 GB available space", graphics="NVIDIA GeForce GTX 770")
+                                  memory_mb="8000", storage_mb="35000", graphics="NVIDIA GeForce GTX 770")
             ]
             SystemRequirement.objects.bulk_create(system_requirements_data)

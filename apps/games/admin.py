@@ -4,21 +4,19 @@ from .models import Game, SystemRequirement
 
 
 class GameAdmin(admin.ModelAdmin):
-    list_display = ["title", "pegi_rating", "release_date", "display_publishers", "display_developer", "display_genres", "usd_price", ]
+    list_display = ["title", "pegi_rating", "release_date", "display_publishers", "display_developers", "display_genres", "usd_price", ]
     search_fields = ["title"]
     ordering = ["title"]
     list_filter = ["genres"]
 
 
     def display_publishers(self, obj):
-        # Get all publisher names and join them with a comma
-        return ", ".join(publisher.name for publisher in obj.publisher.all())
+        return ", ".join(publishers.name for publishers in obj.publishers.all())
     display_publishers.short_description = 'Publishers'  # Set the column header in the admin
 
-    def display_developer(self, obj):
-        # Get all developer names and join them with a comma
-        return ", ".join(developer.name for developer in obj.developer.all())
-    display_developer.short_description = 'Developer'  # Set the column header in the admin
+    def display_developers(self, obj):
+        return ", ".join(developers.name for developers in obj.developers.all())
+    display_developers.short_description = 'Developers'  # Set the column header in the admin
 
     def display_genres(self, obj):
         return ", ".join(genres.name for genres in obj.genres.all())
@@ -32,4 +30,4 @@ class SystemRequirementAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Game, GameAdmin)
-admin.site.register(SystemRequirement,SystemRequirementAdmin)
+admin.site.register(SystemRequirement, SystemRequirementAdmin)

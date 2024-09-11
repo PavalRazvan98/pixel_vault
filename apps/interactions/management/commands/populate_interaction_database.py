@@ -13,7 +13,7 @@ class Command(BaseCommand):
     help = "Populate the \"interactions\" database with sample sessions."
 
     def handle(self, *args, **kwargs):
-        if Session.objects.count() >= 5 or User.objects.count() >= 20:
+        if Session.objects.count() != 0:
             self.stdout.write(
                 "There are enough `Sessions` in the database, going to use them. "
             )

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Publisher, Platform, Developer, Genre, Feature, Badges
+from .models import Publisher, Platform, Developer, Genre, Feature, Badge
 
 
 class PublisherAdmin(admin.ModelAdmin):
@@ -42,5 +42,5 @@ admin.site.register(Developer, DeveloperAdmin)
 admin.site.register(Platform, PlatformAdmin)
 admin.site.register(Genre, GenreAdmin)
 admin.site.register(Feature, FeatureAdmin)
-admin.site.register(Badges, BadgesAdmin)
+admin.site.register(Badge, BadgesAdmin)
 

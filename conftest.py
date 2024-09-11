@@ -1,24 +1,62 @@
-from datetime import timedelta
-import random
-
 import pytest
-import factory
 
-from apps.games.models import Game
-from apps.interactions.models import Session
-from apps.misc.models import Genre, Publisher, Developer, Platform, Feature, Badges
+from fixtures.factories import (
+    GenreFactory, PublisherFactory, BadgeFactory, DeveloperFactory, PlatformFactory, FeatureFactory, GameFactory,
+    SystemRequirementFactory, RatingFactory, SessionFactory
+)
 
 
-# Genre
+
 @pytest.fixture(scope='session')
 def genre_factory():
-    class GenreFactory(factory.django.DjangoModelFactory):
-        class Meta:
-            model = Genre
-
     return GenreFactory
 
 
+@pytest.fixture(scope='session')
+def publisher_factory():
+    return PublisherFactory
+
+
+@pytest.fixture(scope='session')
+def badge_factory():
+    return BadgeFactory
+
+
+@pytest.fixture(scope='session')
+def developer_factory():
+    return DeveloperFactory
+
+
+@pytest.fixture(scope='session')
+def platform_factory():
+    return PlatformFactory
+
+
+@pytest.fixture(scope='session')
+def feature_factory():
+    return FeatureFactory
+
+
+@pytest.fixture(scope='session')
+def game_factory():
+    return GameFactory
+
+
+@pytest.fixture(scope='session')
+def system_requirement_factory():
+    return SystemRequirementFactory
+
+
+@pytest.fixture(scope='session')
+def rating_factory():
+    return RatingFactory
+
+
+@pytest.fixture(scope='session')
+def session_factory():
+    return SessionFactory
+
+# ? ?
 @pytest.fixture
 def genres(genre_factory):
     return genre_factory.create_batch(3)
@@ -29,16 +67,6 @@ def genre(genre_factory):
     return genre_factory.create()
 
 
-# Publisher
-@pytest.fixture(scope='session')
-def publisher_factory():
-    class PublisherFactory(factory.django.DjangoModelFactory):
-        class Meta:
-            model = Publisher
-
-    return PublisherFactory
-
-
 @pytest.fixture
 def publishers(publisher_factory):
     return publisher_factory.create_batch(3)
@@ -47,15 +75,6 @@ def publishers(publisher_factory):
 @pytest.fixture
 def publisher(publisher_factory):
     return publisher_factory.create()
-
-# Developer
-@pytest.fixture(scope='session')
-def developer_factory():
-    class DeveloperFactory(factory.django.DjangoModelFactory):
-        class Meta:
-            model = Developer
-
-    return DeveloperFactory
 
 
 @pytest.fixture
@@ -68,16 +87,6 @@ def developer(developer_factory):
     return developer_factory.create()
 
 
-# Platform
-@pytest.fixture(scope='session')
-def platform_factory():
-    class PlatformFactory(factory.django.DjangoModelFactory):
-        class Meta:
-            model = Platform
-
-    return PlatformFactory
-
-
 @pytest.fixture
 def platforms(platform_factory):
     return platform_factory.create_batch(3)
@@ -86,16 +95,6 @@ def platforms(platform_factory):
 @pytest.fixture
 def platform(platform_factory):
     return platform_factory.create()
-
-
-# Feature
-@pytest.fixture(scope="session")
-def feature_factory():
-    class FeatureFactory(factory.django.DjangoModelFactory):
-        class Meta:
-            model = Feature
-
-    return FeatureFactory
 
 
 @pytest.fixture
@@ -108,65 +107,52 @@ def feature(feature_factory):
     return feature_factory.create()
 
 
-# Badges
-@pytest.fixture(scope="session")
-def badges_factory():
-    class BadgesFactory(factory.django.DjangoModelFactory):
-        class Meta:
-            model = Badges
-
-    return BadgesFactory
+@pytest.fixture
+def badges(badge_factory):
+    return badge_factory.create_batch(3)
 
 
 @pytest.fixture
-def badges(badges_factory):
-    return badges_factory.create_batch(3)
+def badge(badge_factory):
+    return badge_factory.create()
 
 
 @pytest.fixture
-def badge(badges_factory):
-    return badges_factory.create()
+def game(game_factory):
+    return game_factory.create()
 
 
-# Games
-# @pytest.fixture(scope="session")
-# def games_factory():
-#     class GamesFactory(factory.django.DjangoModelFactory):
-#         class Meta:
-#             model = Game
-#         release_date = factory.Faker('date')
-#
-#     return GamesFactory
-#
-#
-# @pytest.fixture
-# def games(games_factory):
-#     return games_factory.create_batch(3)
-#
-#
-# @pytest.fixture
-# def game(games_factory):
-#     return games_factory.create()
-#
-#
-# # Session
-# @pytest.fixture(scope="session")
-# def session_factory():
-#     class SessionFactory(factory.django.DjangoModelFactory):
-#         class Meta:
-#             model = Session
-#
-#         time_play = factory.Faker('time_delta')
-#         ip_address = factory.Faker('ipv4')
-#
-#     return SessionFactory
-#
-#
-# @pytest.fixture
-# def sessions(session_factory, games):
-#     return session_factory.create_batch(3)
-#
-#
-# @pytest.fixture
-# def session(session_factory, game):
-#     return session_factory.create()
+@pytest.fixture
+def games(game_factory):
+    return game_factory.create_batch(3)
+
+
+@pytest.fixture
+def system_requirement(system_requirement_factory):
+    return system_requirement_factory.create()
+
+
+@pytest.fixture
+def system_requirements(system_requirement_factory):
+    return system_requirement_factory.create_batch(3)
+
+
+@pytest.fixture
+def rating(rating_factory):
+    return rating_factory.create()
+
+
+@pytest.fixture
+def ratings(rating_factory):
+    return rating_factory.create_batch(3)
+
+
+@pytest.fixture
+def session(session_factory):
+    return session_factory.create()
+
+
+@pytest.fixture
+def sessions(session_factory):
+    return session_factory.create_batch(3)
+
