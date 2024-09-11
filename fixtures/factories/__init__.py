@@ -1,7 +1,7 @@
 from .misc import GenreFactory, FeatureFactory, PlatformFactory, PublisherFactory, DeveloperFactory, BadgeFactory
 from .games import GameFactory, SystemRequirementFactory
-from .rating import RatingFactory
-from .session import SessionFactory
+from .feedback import RatingFactory
+from .interactions import SessionFactory
 
 __all__ = (
     # Misc
