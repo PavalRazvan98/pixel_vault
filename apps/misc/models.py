@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.misc.choices import NationalityOptions, DeveloperEntity
+from apps.misc.choices import DeveloperEntity, NationalityOptions
 
 
 class Publisher(models.Model):
@@ -23,8 +23,8 @@ class Developer(models.Model):
 
 
 class Platform(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    logo = models.URLField(max_length=200, null=True)
+    name = models.CharField(max_length=100)
+    logo = models.URLField(max_length=200)
 
     def __str__(self):
         return self.name

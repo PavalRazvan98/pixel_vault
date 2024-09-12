@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Publisher, Platform, Developer, Genre, Feature, Badge
+
+from .models import Badge, Developer, Feature, Genre, Platform, Publisher
 
 
 class PublisherAdmin(admin.ModelAdmin):
@@ -8,16 +9,19 @@ class PublisherAdmin(admin.ModelAdmin):
     search_fields = ["name"]
     list_filter = ["nationality"]
 
+
 class DeveloperAdmin(admin.ModelAdmin):
     list_display = ["name", "nationality", "entity", "still_active"]
     ordering = ["name"]
     search_fields = ["name"]
     list_filter = ["nationality"]
 
+
 class PlatformAdmin(admin.ModelAdmin):
     list_display = ["name"]
     ordering = ["name"]
     search_fields = ["name"]
+
 
 class GenreAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -43,4 +47,3 @@ admin.site.register(Platform, PlatformAdmin)
 admin.site.register(Genre, GenreAdmin)
 admin.site.register(Feature, FeatureAdmin)
 admin.site.register(Badge, BadgesAdmin)
-

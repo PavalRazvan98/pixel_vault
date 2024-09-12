@@ -1,12 +1,12 @@
-name: Lint
+name: Test
 
 on:
   push:
     branches:
       - '*'
 jobs:
-  lint:
-    name: Lint
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -25,5 +25,5 @@ jobs:
       - name: Install packages
         run: poetry install
 
-      - name: Run Lint
-        run: make lint
+      - name: Run Tests
+        run : make test

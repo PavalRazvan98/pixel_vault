@@ -1,5 +1,7 @@
 from django.contrib import admin
+
 from .models import Rating
+
 
 class RatingAdmin(admin.ModelAdmin):
     list_display = ["game", "user", "score", "content"]

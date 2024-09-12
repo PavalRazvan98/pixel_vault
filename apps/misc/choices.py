@@ -13,6 +13,7 @@ class NationalityOptions(models.TextChoices):
     Canada = "Canada"
     Unknown = "Unknown"
 
+
 class DeveloperEntity(models.TextChoices):
     Person = "Person"
     Company = "Company"

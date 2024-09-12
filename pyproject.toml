@@ -30,3 +30,21 @@ factory-boy = "^3.3.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+line-length = 120
+exclude = [
+  "*/migrations/*.py"
+]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["EM", "ANN", "ARG", "FBT", "DTZ", "TCH", "TD", "FIX", "TRY", "RUF012", "PLR2004", "BLE001", "D"]
+
+[tool.ruff.lint.per-file-ignores]
+"*/tests/*.py" = ["S"]
+"fixtures/*.py" = ["S"]
