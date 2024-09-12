@@ -1,2 +1,5 @@
 lint:
-	ruff check --fix
+	poetry run ruff check
+
+test:
+	poetry run pytest
