@@ -47,7 +47,7 @@ jobs:
       - name: Load environment variables
         run: |
           set -o allexport
-          source .env
+          source .pytest_env
           set +o allexport
 
       - name: List files in the repository
