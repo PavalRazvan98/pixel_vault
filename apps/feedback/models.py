@@ -18,4 +18,4 @@ class Rating(models.Model):
         unique_together = ("game", "user")
 
     def __str__(self):
-        return f"{self.game} rated by {self.user} with score {self.score}/5"
+        return f"{self.game_id} rated by {self.user_id} with score {self.score}/5"

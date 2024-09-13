@@ -1,6 +1,6 @@
 lint:
 	poetry run ruff check
-	ruff format --check
+	poetry run ruff format
 
 test:
 	poetry run pytest

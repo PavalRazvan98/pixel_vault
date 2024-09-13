@@ -39,7 +39,7 @@ exclude = [
 ]
 
 [tool.ruff.format]
-quote-style = "single"
+quote-style = "double"
 
 [tool.ruff.lint]
 select = ["ALL"]
