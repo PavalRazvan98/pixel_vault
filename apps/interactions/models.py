@@ -15,4 +15,4 @@ class Session(models.Model):
         unique_together = ("game", "user")
 
     def __str__(self):
-        return f"{self.user_id} played {self.game} for {self.time_play}"
+        return f"{self.user_id} played {self.game_id} for {self.time_play}"
