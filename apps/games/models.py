@@ -33,7 +33,6 @@ class Game(models.Model):
         return self.release_date.year
 
 
-
 class SystemRequirement(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     type = models.CharField(max_length=20, choices=TypeOptions)
@@ -46,10 +45,8 @@ class SystemRequirement(models.Model):
     class Meta:
         unique_together = ("game", "type", "os")
 
-
     def __str__(self):
         return f"{self.game} {self.type} run on {self.os}"
-
 
     @property
     def memory(self):
@@ -68,4 +65,3 @@ class SystemRequirement(models.Model):
         if self.storage_mb < mb:
             return f"{self.storage_mb} MB"
         return f"{self.storage_mb / mb} GB"
-

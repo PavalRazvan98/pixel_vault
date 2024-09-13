@@ -44,7 +44,7 @@ quote-style = "double"
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["EM", "ANN", "ARG", "FBT", "DTZ", "TCH", "TD", "FIX", "TRY", "RUF012", "PLR2004", "BLE001", "D"]
+ignore = ["EM", "ANN", "ARG", "FBT", "DTZ", "TCH", "TD", "FIX", "TRY", "RUF012", "PLR2004", "BLE001", "D", "COM812", "ISC001"]
 
 [tool.ruff.lint.per-file-ignores]
 "*/tests/*.py" = ["S"]
