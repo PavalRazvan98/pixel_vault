@@ -40,7 +40,7 @@ jobs:
         run: poetry install
 
       - name: Install dotenv-cli
-          run: pip install dotenv-cli
+        run: pip install dotenv-cli
 
       - name: Install packages
         run: poetry install
