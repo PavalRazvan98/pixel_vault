@@ -39,5 +39,17 @@ jobs:
       - name: Install packages
         run: poetry install
 
+      - name: Install dotenv-cli
+          run: pip install dotenv-cli
+
+      - name: Install packages
+        run: poetry install
+
+      - name: Wait for PostgreSQL
+        run: until pg_isready -h 127.0.0.1 -p 55432; do sleep 1; done
+
+      - name: Load environment variables
+        run: dotenv -f .env run echo "Environment variables loaded"
+
       - name: Run Tests
         run : make test
