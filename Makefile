@@ -4,4 +4,4 @@ lint:
 
 
 test:
-	poetry run pytest --env
+	poetry run pytest
