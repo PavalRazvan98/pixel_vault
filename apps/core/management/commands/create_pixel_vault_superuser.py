@@ -21,7 +21,7 @@ class Command(BaseCommand):
             self.stdout.write(
                 self.style.WARNING(
                     f'There is already a superuser in the DB, the username is "{existing_superuser.username}". '
-                    f'Won\'t create another superuser.',
+                    f"Won't create another superuser.",
                 ),
             )
             return
