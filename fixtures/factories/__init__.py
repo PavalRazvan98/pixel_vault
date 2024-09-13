@@ -1,27 +1,21 @@
-from .misc import GenreFactory, FeatureFactory, PlatformFactory, PublisherFactory, DeveloperFactory, BadgeFactory
-from .games import GameFactory, SystemRequirementFactory
 from .feedback import RatingFactory
+from .games import GameFactory, SystemRequirementFactory
 from .interactions import SessionFactory
+from .misc import BadgeFactory, DeveloperFactory, FeatureFactory, GenreFactory, PlatformFactory, PublisherFactory
 
 __all__ = (
     # Misc
-    'GenreFactory',
-    'FeatureFactory',
-    'PlatformFactory',
-    'BadgeFactory',
-    'DeveloperFactory',
-    'PublisherFactory',
-
+    "GenreFactory",
+    "FeatureFactory",
+    "PlatformFactory",
+    "BadgeFactory",
+    "DeveloperFactory",
+    "PublisherFactory",
     # Games
-    'GameFactory',
-    'SystemRequirementFactory',
-
+    "GameFactory",
+    "SystemRequirementFactory",
     # Rating
-    'RatingFactory',
-
+    "RatingFactory",
     # Interaction
-    'SessionFactory',
+    "SessionFactory",
 )
-
-
-

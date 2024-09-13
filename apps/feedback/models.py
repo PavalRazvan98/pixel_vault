@@ -8,7 +8,7 @@ User = get_user_model()
 
 
 class Rating(models.Model):
-    game = models.ForeignKey('games.Game', on_delete=models.CASCADE)
+    game = models.ForeignKey("games.Game", on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     content = models.CharField(max_length=200)
     score = models.IntegerField(null=True, validators=[MaxValueValidator(5), MinValueValidator(1)])
@@ -16,3 +16,6 @@ class Rating(models.Model):
 
     class Meta:
         unique_together = ("game", "user")
+
+    def __str__(self):
+        return f"{self.game_id} rated by {self.user_id} with score {self.score}/5"

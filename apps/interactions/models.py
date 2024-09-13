@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class Session(models.Model):
-    game = models.ForeignKey('games.Game', on_delete=models.CASCADE)
+    game = models.ForeignKey("games.Game", on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     last_play = models.DateField(auto_now_add=True)
     time_play = models.DurationField()
@@ -14,3 +14,5 @@ class Session(models.Model):
     class Meta:
         unique_together = ("game", "user")
 
+    def __str__(self):
+        return f"{self.user_id} played {self.game_id} for {self.time_play}"

@@ -5,9 +5,10 @@ from django.core.management import call_command
 from apps.feedback.models import Rating
 from apps.games.models import Game, SystemRequirement
 from apps.interactions.models import Session
-from apps.misc.models import Badge, Feature, Genre, Platform, Developer, Publisher
+from apps.misc.models import Badge, Developer, Feature, Genre, Platform, Publisher
 
 User = get_user_model()
+
 
 @pytest.mark.django_db
 def test_populate_database():
@@ -36,7 +37,6 @@ def test_populate_database():
     assert Publisher.objects.count() == 12
     assert Genre.objects.count() == 9
     assert User.objects.filter(is_superuser=False, is_staff=False).count() == 15
-
 
 
 @pytest.mark.django_db

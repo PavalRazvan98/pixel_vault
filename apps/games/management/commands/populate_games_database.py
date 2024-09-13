@@ -3,7 +3,7 @@ from datetime import date
 from django.core.management.base import BaseCommand
 
 from apps.games.models import Game, SystemRequirement
-from apps.misc.models import Genre, Feature, Publisher, Developer, Platform, Badge
+from apps.misc.models import Badge, Developer, Feature, Genre, Platform, Publisher
 
 
 class Command(BaseCommand):
@@ -12,7 +12,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         if Game.objects.count():
             self.stdout.write(
-                "There are `Games` in the database, going to use them. "
+                "There are `Games` in the database, going to use them. ",
             )
         else:
             action_genre = Genre.objects.get(name="Action")
@@ -55,7 +55,7 @@ class Command(BaseCommand):
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo1.jpg",
                     "video": "https://example.com/video1.mp4",
-                    "usd_price": 59.99
+                    "usd_price": 59.99,
                 },
                 {
                     "title": "Cyberpunk 2077",
@@ -71,7 +71,7 @@ class Command(BaseCommand):
                     "badges": [most_anticipated_badge],
                     "photo": "https://example.com/photo2.jpg",
                     "video": "https://example.com/video2.mp4",
-                    "usd_price": 59.99
+                    "usd_price": 59.99,
                 },
                 {
                     "title": "The Witcher 3: Wild Hunt",
@@ -87,7 +87,7 @@ class Command(BaseCommand):
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo3.jpg",
                     "video": "https://example.com/video3.mp4",
-                    "usd_price": 39.99
+                    "usd_price": 39.99,
                 },
                 {
                     "title": "Red Dead Redemption 2",
@@ -103,7 +103,7 @@ class Command(BaseCommand):
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo4.jpg",
                     "video": "https://example.com/video4.mp4",
-                    "usd_price": 59.99
+                    "usd_price": 59.99,
                 },
                 {
                     "title": "Fallout 4",
@@ -119,7 +119,7 @@ class Command(BaseCommand):
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo5.jpg",
                     "video": "https://example.com/video5.mp4",
-                    "usd_price": 49.99
+                    "usd_price": 49.99,
                 },
                 {
                     "title": "Horizon Zero Dawn",
@@ -135,7 +135,7 @@ class Command(BaseCommand):
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo6.jpg",
                     "video": "https://example.com/video6.mp4",
-                    "usd_price": 39.99
+                    "usd_price": 39.99,
                 },
                 {
                     "title": "God of War",
@@ -151,7 +151,7 @@ class Command(BaseCommand):
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo7.jpg",
                     "video": "https://example.com/video7.mp4",
-                    "usd_price": 49.99
+                    "usd_price": 49.99,
                 },
                 {
                     "title": "Death Stranding",
@@ -167,9 +167,8 @@ class Command(BaseCommand):
                     "badges": [best_game_badge],
                     "photo": "https://example.com/photo8.jpg",
                     "video": "https://example.com/video8.mp4",
-                    "usd_price": 59.99
-                }
-
+                    "usd_price": 59.99,
+                },
             ]
 
             for game_data in games:
@@ -181,7 +180,7 @@ class Command(BaseCommand):
                     long_description=game_data["long_description"],
                     photo=game_data["photo"],
                     video=game_data["video"],
-                    usd_price=game_data["usd_price"]
+                    usd_price=game_data["usd_price"],
                 )
                 game.genres.set(game_data["genres"])
                 game.features.set(game_data["features"])
@@ -190,28 +189,70 @@ class Command(BaseCommand):
                 game.platforms.set(game_data["platforms"])
                 game.badges.set(game_data["badges"])
 
-                self.stdout.write(f'Successfully added game: {game.title}')
+                self.stdout.write(f"Successfully added game: {game.title}")
 
         if SystemRequirement.objects.count():
             self.stdout.write(
-                "There are `System Requirement` in the database, going to use them. "
+                "There are `System Requirement` in the database, going to use them. ",
             )
         else:
             game1 = Game.objects.get(title="The Last of Us Part II")
             game2 = Game.objects.get(title="Cyberpunk 2077")
             game3 = Game.objects.get(title="The Witcher 3: Wild Hunt")
             system_requirements_data = [
-                SystemRequirement(game=game1, type="Minimum", os="Windows 10", processor="Intel Core i5-2500K",memory_mb="8000",
-                                  storage_mb="10000", graphics="NVIDIA GeForce GTX 780"),
-                SystemRequirement(game=game1, type="Recommended", os="Windows 10", processor="Intel Core i7-4770K",
-                                  memory_mb="16000", storage_mb="10000", graphics="NVIDIA GeForce GTX 1060"),
-                SystemRequirement(game=game2, type="Minimum", os="Windows 10", processor="Intel Core i5-3570K",
-                                  memory_mb="8000", storage_mb="7000", graphics="NVIDIA GeForce GTX 780"),
-                SystemRequirement(game=game2, type="Recommended", os="Windows 10", processor="Intel Core i7-4790",
-                                  memory_mb="12000", storage_mb="70000", graphics="NVIDIA GeForce GTX 1060"),
-                SystemRequirement(game=game3, type="Minimum", os="Windows 7", processor="Intel Core i5-2500K",
-                                  memory_mb="6000", storage_mb="35000", graphics="NVIDIA GeForce GTX 660"),
-                SystemRequirement(game=game3, type="Recommended", os="Windows 10", processor="Intel Core i7-3770",
-                                  memory_mb="8000", storage_mb="35000", graphics="NVIDIA GeForce GTX 770")
+                SystemRequirement(
+                    game=game1,
+                    type="Minimum",
+                    os="Windows 10",
+                    processor="Intel Core i5-2500K",
+                    memory_mb="8000",
+                    storage_mb="10000",
+                    graphics="NVIDIA GeForce GTX 780",
+                ),
+                SystemRequirement(
+                    game=game1,
+                    type="Recommended",
+                    os="Windows 10",
+                    processor="Intel Core i7-4770K",
+                    memory_mb="16000",
+                    storage_mb="10000",
+                    graphics="NVIDIA GeForce GTX 1060",
+                ),
+                SystemRequirement(
+                    game=game2,
+                    type="Minimum",
+                    os="Windows 10",
+                    processor="Intel Core i5-3570K",
+                    memory_mb="8000",
+                    storage_mb="7000",
+                    graphics="NVIDIA GeForce GTX 780",
+                ),
+                SystemRequirement(
+                    game=game2,
+                    type="Recommended",
+                    os="Windows 10",
+                    processor="Intel Core i7-4790",
+                    memory_mb="12000",
+                    storage_mb="70000",
+                    graphics="NVIDIA GeForce GTX 1060",
+                ),
+                SystemRequirement(
+                    game=game3,
+                    type="Minimum",
+                    os="Windows 7",
+                    processor="Intel Core i5-2500K",
+                    memory_mb="6000",
+                    storage_mb="35000",
+                    graphics="NVIDIA GeForce GTX 660",
+                ),
+                SystemRequirement(
+                    game=game3,
+                    type="Recommended",
+                    os="Windows 10",
+                    processor="Intel Core i7-3770",
+                    memory_mb="8000",
+                    storage_mb="35000",
+                    graphics="NVIDIA GeForce GTX 770",
+                ),
             ]
             SystemRequirement.objects.bulk_create(system_requirements_data)

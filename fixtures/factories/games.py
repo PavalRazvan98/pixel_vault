@@ -5,16 +5,16 @@ from apps.games.choices import PEGIOptions, TypeOptions
 
 class GameFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = 'games.Game'
+        model = "games.Game"
 
-    title = factory.Faker('sentence')
-    short_description = factory.Faker('paragraph')
-    pegi_rating = factory.Faker('random_element', elements=PEGIOptions)
-    release_date = factory.Faker('date_this_decade')
-    long_description = factory.Faker('paragraphs')
-    photo = factory.Faker('url')
-    video = factory.Faker('url')
-    usd_price = factory.Faker('pyfloat')
+    title = factory.Faker("sentence")
+    short_description = factory.Faker("paragraph")
+    pegi_rating = factory.Faker("random_element", elements=PEGIOptions)
+    release_date = factory.Faker("date_this_decade")
+    long_description = factory.Faker("paragraphs")
+    photo = factory.Faker("url")
+    video = factory.Faker("url")
+    usd_price = factory.Faker("pyfloat")
 
     @factory.post_generation
     def genres(self, create, extracted, **kwargs):
@@ -55,12 +55,12 @@ class GameFactory(factory.django.DjangoModelFactory):
 
 class SystemRequirementFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = 'games.SystemRequirement'
+        model = "games.SystemRequirement"
 
     game = factory.SubFactory(GameFactory)
-    type = factory.Faker('random_element', elements=TypeOptions)
-    os = factory.Faker('word')
-    processor = factory.Faker('word')
-    memory_mb = factory.Faker('pyint')
-    storage_mb = factory.Faker('pyint')
-    graphics = factory.Faker('word')
+    type = factory.Faker("random_element", elements=TypeOptions)
+    os = factory.Faker("word")
+    processor = factory.Faker("word")
+    memory_mb = factory.Faker("pyint")
+    storage_mb = factory.Faker("pyint")
+    graphics = factory.Faker("word")

@@ -22,9 +22,14 @@ In this app I used the followings tech:
 
 ## Configuration
 
-| Config name             | Type | Default Value   | Description                             |
-|-------------------------|------|-----------------|-----------------------------------------|
-| PIXEL_VAULT_USERNAME    | str  | admin           | Default value for Super User `Username` |
-| PIXEL_VAULT_PASSWORD    | str  | qwerty123       | Default value for Super User `Password` |
-| PIXEL_VAULT_EMAIL       | str  | admin@gmail.com | Default value for Super User `Email`    |
-
+| Config name                | Type  | Default Value   | Description                                                                |
+|----------------------------|-------|-----------------|----------------------------------------------------------------------------|
+| PIXEL_VAULT_USERNAME       | str   | admin           | Default value for Super User `Username`                                    |
+| PIXEL_VAULT_PASSWORD       | str   | qwerty123       | Default value for Super User `Password`                                    |
+| PIXEL_VAULT_EMAIL          | str   | admin@gmail.com | Default value for Super User `Email`                                       |
+| PIXEL_VAULT_SECRET_KEY     | str   | ***             | https://docs.djangoproject.com/en/5.1/ref/settings/#std-setting-SECRET_KEY |
+| POSTGRES_USER              | str   | postgres        | Postgres account username                                                  |
+| POSTGRES_PASSWORD          | str   | postgres        | Postgres account password                                                  |
+| POSTGRES_DB                | str   | pixel_vault     | Postgres Database name                                                     |
+| POSTGRES_PORT              | str   | 55432           | The port that Postgres use                                                 |
+| POSTGRES_HOST              | str   | 127.0.0.1       | The host that Postgres use                                                 |
