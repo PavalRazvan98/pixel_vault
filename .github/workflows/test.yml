@@ -41,17 +41,5 @@ jobs:
       - name: Install packages
         run: poetry install
 
-      - name: Wait for PostgreSQL
-        run: until pg_isready -h 127.0.0.1 -p 55432; do sleep 1; done
-
-      - name: Load environment variables
-        run: |
-          set -o allexport
-          source .pytest_env
-          set +o allexport
-
-      - name: List files in the repository
-        run: ls -R
-
       - name: Run Tests
         run: poetry run pytest
