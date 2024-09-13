@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - '*'
+
 jobs:
   test:
     name: Test
@@ -12,9 +13,9 @@ jobs:
       postgres:
         image: postgres
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: pixel_vault_test
-          POSTGRES_PORT: 55432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -22,6 +23,7 @@ jobs:
           --health-retries 5
         ports:
           - 55432:5432
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -39,18 +41,17 @@ jobs:
       - name: Install packages
         run: poetry install
 
-      - name: Install dotenv-cli
-        run: pip install dotenv-cli
-
-      - name: Install packages
-        run: poetry install
-
       - name: Wait for PostgreSQL
         run: until pg_isready -h 127.0.0.1 -p 55432; do sleep 1; done
 
       - name: Load environment variables
         run: |
-          export $(grep -v '^#' .env | xargs)
+          set -o allexport
+          source .env
+          set +o allexport
+
+      - name: List files in the repository
+        run: ls -R
 
       - name: Run Tests
-        run : make test
+        run: poetry run pytest
