@@ -1,7 +1,5 @@
 import pytest
 
-from apps.misc.models import Publisher
-
 
 @pytest.mark.django_db
 def test_publisher_str(publisher):
