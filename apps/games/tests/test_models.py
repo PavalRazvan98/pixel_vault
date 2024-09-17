@@ -28,4 +28,3 @@ def test_game_str(game):
 def test_system_requirement_str(system_requirement):
     valid = f"{system_requirement.game} {system_requirement.type} run on {system_requirement.os}"
     assert str(system_requirement) == valid
-
