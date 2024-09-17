@@ -1,6 +1,6 @@
 lint:
 	poetry run ruff check
-	poetry run ruff format
+	poetry run ruff format --check
 
 
 test:
