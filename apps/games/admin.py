@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Game, SystemRequirement
+from .models import Game, SystemRequirement, Media
 
 
 class GameAdmin(admin.ModelAdmin):
@@ -39,5 +39,10 @@ class SystemRequirementAdmin(admin.ModelAdmin):
     list_filter = ["os"]
 
 
+class MediaAdmin(admin.ModelAdmin):
+    list_display = ["game"]
+
+
 admin.site.register(Game, GameAdmin)
 admin.site.register(SystemRequirement, SystemRequirementAdmin)
+admin.site.register(Media,MediaAdmin)

@@ -15,22 +15,22 @@ class Game(models.Model):
     developers = models.ManyToManyField("misc.Developer")
     platforms = models.ManyToManyField("misc.Platform")
     badges = models.ManyToManyField("misc.Badge")
-    photo = models.URLField(max_length=1000, blank=True)
-    video = models.URLField(max_length=1000, blank=True)
     usd_price = models.FloatField()
 
     def __str__(self):
         return f"{self.title} ({self.release_year})"
 
-    def photo_display(self):
-        return self.photo if self.photo is not None else "https://demofree.sirv.com/nope-not-here.jpg"
-
-    def video_display(self):
-        return self.video if self.video is not None else "https://i.ytimg.com/vi/UH1ThWZ9hXU/hqdefault.jpg"
-
     @property
     def release_year(self):
         return self.release_date.year
+
+
+class Media(models.Model):
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    url = models.URLField(max_length=1000, blank=True)
+
+    def __str__(self):
+        return f"URL: {self.url} "
 
 
 class SystemRequirement(models.Model):

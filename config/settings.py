@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "apps.interactions",
     "apps.misc",
     "apps.core",
+
 ]
 
 MIDDLEWARE = [

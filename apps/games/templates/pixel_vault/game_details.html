@@ -1,0 +1,65 @@
+{% extends 'pixel_vault/navbar.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'pixel_vault/game_page.css' %}">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ game.title }}</h1>
+
+            <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                     {% for media in game.media_set.all %}
+                    <div class="carousel-item active">
+                        <img src="{{ media.url }}" class="d-block img-fluid" alt="{{ game.title }}">
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="game-pegi">
+                <h3 class="pegi" style="color: crimson"> PEGI {{ game.pegi_rating }}</h3>
+            </div>
+            <div class="game-details">
+                <h3>Description</h3>
+                <p>{{ game.long_description }}</p>
+                <div class="game-price">
+                      {% if game.usd_price != 0 %}
+                      <h3 class="card-price" style="color: #ec0808">{{ game.usd_price }} $</h3>
+                      {% else %}
+                      <h3 class="card-price" style="color: #10d738">Free to play</h3>
+                      {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <h1 style="color: gold">System Requirements</h1>
+    <div class="row">
+        {% for system in game.systemrequirement_set.all %}
+            <div class="col-md-6">
+                <h3>Type: {{ system.type }}</h3>
+                <h3>OS: {{ system.os }}</h3>
+                <h3>Processor: {{ system.processor }}</h3>
+                <h3>Memory: {{ system.memory_mb }} MB</h3>
+                <h3>Storage: {{ system.storage_mb }} MB</h3>
+                <h3>Graphics: {{ system.graphics }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+{% endblock %}

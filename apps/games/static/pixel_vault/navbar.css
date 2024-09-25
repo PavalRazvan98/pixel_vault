@@ -1,0 +1,32 @@
+body { background-color: #200f2d
+}
+
+.navbar {
+    padding: 10px 20px;
+}
+
+.navbar .btn-outline-light {
+    margin-right: 10px;
+}
+
+.navbar .navbar-nav {
+    margin-left: auto;
+}
+
+.nav-link {
+    color: white !important;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.custom-font {
+    font-size: 24px;
+    color: white !important;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    scale: 120%;
+    color: #ab4de0 !important;
+}
+
