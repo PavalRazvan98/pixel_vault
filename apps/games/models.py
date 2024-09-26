@@ -30,7 +30,7 @@ class Media(models.Model):
     url = models.URLField(max_length=1000, blank=True)
 
     def __str__(self):
-        return f"URL: {self.url} "
+        return f"URL: {self.url}"
 
 
 class SystemRequirement(models.Model):

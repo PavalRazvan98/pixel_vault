@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core.management import call_command
 
 from apps.feedback.models import Rating
-from apps.games.models import Game, SystemRequirement
+from apps.games.models import Game, SystemRequirement, Media
 from apps.interactions.models import Session
 from apps.misc.models import Badge, Developer, Feature, Genre, Platform, Publisher
 
@@ -14,6 +14,7 @@ User = get_user_model()
 def test_populate_database():
     assert Game.objects.count() == 0
     assert SystemRequirement.objects.count() == 0
+    assert Media.objects.count() == 0
     assert Rating.objects.count() == 0
     assert Session.objects.count() == 0
     assert Badge.objects.count() == 0
@@ -28,6 +29,7 @@ def test_populate_database():
 
     assert Game.objects.count() == 8
     assert SystemRequirement.objects.count() == 6
+    assert Media.objects.count() == 3
     assert Rating.objects.count() != 0
     assert Session.objects.count() != 0
     assert Badge.objects.count() == 7
@@ -85,6 +87,12 @@ def test_populate_database__skip_game(games):
 def test_populate_database__skip_system_requirement(system_requirements):
     call_command("populate_database")
     assert SystemRequirement.objects.count() == 3
+
+
+@pytest.mark.django_db
+def test_populate_database__skip_media(medias):
+    call_command("populate_database")
+    assert Media.objects.count() == 3
 
 
 @pytest.mark.django_db

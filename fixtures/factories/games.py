@@ -12,8 +12,6 @@ class GameFactory(factory.django.DjangoModelFactory):
     pegi_rating = factory.Faker("random_element", elements=PEGIOptions)
     release_date = factory.Faker("date_this_decade")
     long_description = factory.Faker("paragraphs")
-    photo = factory.Faker("url")
-    video = factory.Faker("url")
     usd_price = factory.Faker("pyfloat")
 
     @factory.post_generation
@@ -64,3 +62,11 @@ class SystemRequirementFactory(factory.django.DjangoModelFactory):
     memory_mb = factory.Faker("pyint")
     storage_mb = factory.Faker("pyint")
     graphics = factory.Faker("word")
+
+
+class MediaFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = "games.Media"
+
+    game = factory.SubFactory(GameFactory)
+    url = factory.Faker("url")

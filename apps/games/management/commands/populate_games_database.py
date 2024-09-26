@@ -2,7 +2,7 @@ from datetime import date
 
 from django.core.management.base import BaseCommand
 
-from apps.games.models import Game, SystemRequirement
+from apps.games.models import Game, SystemRequirement, Media
 from apps.misc.models import Badge, Developer, Feature, Genre, Platform, Publisher
 
 
@@ -53,8 +53,6 @@ class Command(BaseCommand):
                     "developers": [naughty_dog_developer],
                     "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
-                    "photo": "https://example.com/photo1.jpg",
-                    "video": "https://example.com/video1.mp4",
                     "usd_price": 59.99,
                 },
                 {
@@ -69,8 +67,6 @@ class Command(BaseCommand):
                     "developers": [cd_projekt_developer],
                     "platforms": [pc_platform, playstation_4_platform],
                     "badges": [most_anticipated_badge],
-                    "photo": "https://example.com/photo2.jpg",
-                    "video": "https://example.com/video2.mp4",
                     "usd_price": 59.99,
                 },
                 {
@@ -85,8 +81,6 @@ class Command(BaseCommand):
                     "developers": [cd_projekt_developer],
                     "platforms": [pc_platform, playstation_4_platform],
                     "badges": [best_game_badge],
-                    "photo": "https://example.com/photo3.jpg",
-                    "video": "https://example.com/video3.mp4",
                     "usd_price": 39.99,
                 },
                 {
@@ -101,8 +95,6 @@ class Command(BaseCommand):
                     "developers": [rockstar_developer],
                     "platforms": [pc_platform, playstation_4_platform, xbox_one_platform],
                     "badges": [best_game_badge],
-                    "photo": "https://example.com/photo4.jpg",
-                    "video": "https://example.com/video4.mp4",
                     "usd_price": 59.99,
                 },
                 {
@@ -117,8 +109,6 @@ class Command(BaseCommand):
                     "developers": [bethesda_developer],
                     "platforms": [pc_platform, playstation_4_platform, xbox_one_platform],
                     "badges": [best_game_badge],
-                    "photo": "https://example.com/photo5.jpg",
-                    "video": "https://example.com/video5.mp4",
                     "usd_price": 49.99,
                 },
                 {
@@ -133,8 +123,6 @@ class Command(BaseCommand):
                     "developers": [naughty_dog_developer],
                     "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
-                    "photo": "https://example.com/photo6.jpg",
-                    "video": "https://example.com/video6.mp4",
                     "usd_price": 39.99,
                 },
                 {
@@ -149,8 +137,6 @@ class Command(BaseCommand):
                     "developers": [naughty_dog_developer],
                     "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
-                    "photo": "https://example.com/photo7.jpg",
-                    "video": "https://example.com/video7.mp4",
                     "usd_price": 49.99,
                 },
                 {
@@ -165,8 +151,6 @@ class Command(BaseCommand):
                     "developers": [naughty_dog_developer],
                     "platforms": [playstation_4_platform],
                     "badges": [best_game_badge],
-                    "photo": "https://example.com/photo8.jpg",
-                    "video": "https://example.com/video8.mp4",
                     "usd_price": 59.99,
                 },
             ]
@@ -178,8 +162,6 @@ class Command(BaseCommand):
                     pegi_rating=game_data["pegi_rating"],
                     release_date=game_data["release_date"],
                     long_description=game_data["long_description"],
-                    photo=game_data["photo"],
-                    video=game_data["video"],
                     usd_price=game_data["usd_price"],
                 )
                 game.genres.set(game_data["genres"])
@@ -256,3 +238,28 @@ class Command(BaseCommand):
                 ),
             ]
             SystemRequirement.objects.bulk_create(system_requirements_data)
+
+        if Media.objects.count():
+            self.stdout.write(
+                "There are `Media` in the database, going to use them. ",
+            )
+        else:
+            game1 = Game.objects.get(title="The Last of Us Part II")
+            game2 = Game.objects.get(title="Cyberpunk 2077")
+            game3 = Game.objects.get(title="The Witcher 3: Wild Hunt")
+            media_data=[
+                Media(
+                    game=game1,
+                    url="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+                ),
+                Media(
+                    game=game2,
+                    url="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+                ),
+                Media(
+                    game=game3,
+                    url="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+                )
+
+            ]
+            Media.objects.bulk_create(media_data)
