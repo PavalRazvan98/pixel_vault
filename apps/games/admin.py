@@ -45,4 +45,4 @@ class MediaAdmin(admin.ModelAdmin):
 
 admin.site.register(Game, GameAdmin)
 admin.site.register(SystemRequirement, SystemRequirementAdmin)
-admin.site.register(Media,MediaAdmin)
+admin.site.register(Media, MediaAdmin)

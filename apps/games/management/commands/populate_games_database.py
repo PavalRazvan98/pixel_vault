@@ -247,7 +247,7 @@ class Command(BaseCommand):
             game1 = Game.objects.get(title="The Last of Us Part II")
             game2 = Game.objects.get(title="Cyberpunk 2077")
             game3 = Game.objects.get(title="The Witcher 3: Wild Hunt")
-            media_data=[
+            media_data = [
                 Media(
                     game=game1,
                     url="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
@@ -259,7 +259,6 @@ class Command(BaseCommand):
                 Media(
                     game=game3,
                     url="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
-                )
-
+                ),
             ]
             Media.objects.bulk_create(media_data)

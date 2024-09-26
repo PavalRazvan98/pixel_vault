@@ -29,6 +29,7 @@ def test_system_requirement_str(system_requirement):
     valid = f"{system_requirement.game} {system_requirement.type} run on {system_requirement.os}"
     assert str(system_requirement) == valid
 
+
 @pytest.mark.django_db
 def test_media_str(media):
     assert str(media) == f"URL: {media.url}"
