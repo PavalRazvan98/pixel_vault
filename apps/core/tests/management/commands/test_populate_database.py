@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core.management import call_command
 
 from apps.feedback.models import Rating
-from apps.games.models import Game, SystemRequirement, Media
+from apps.games.models import Game, Media, SystemRequirement
 from apps.interactions.models import Session
 from apps.misc.models import Badge, Developer, Feature, Genre, Platform, Publisher
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Game, SystemRequirement, Media
+from .models import Game, Media, SystemRequirement
 
 
 class GameAdmin(admin.ModelAdmin):

@@ -6,12 +6,12 @@ from fixtures.factories import (
     FeatureFactory,
     GameFactory,
     GenreFactory,
+    MediaFactory,
     PlatformFactory,
     PublisherFactory,
     RatingFactory,
     SessionFactory,
     SystemRequirementFactory,
-    MediaFactory,
 )
 
 

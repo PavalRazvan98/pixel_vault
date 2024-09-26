@@ -1,5 +1,5 @@
 from .feedback import RatingFactory
-from .games import GameFactory, SystemRequirementFactory, MediaFactory
+from .games import GameFactory, MediaFactory, SystemRequirementFactory
 from .interactions import SessionFactory
 from .misc import BadgeFactory, DeveloperFactory, FeatureFactory, GenreFactory, PlatformFactory, PublisherFactory
 

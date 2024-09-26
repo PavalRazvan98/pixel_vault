@@ -2,7 +2,7 @@ from datetime import date
 
 from django.core.management.base import BaseCommand
 
-from apps.games.models import Game, SystemRequirement, Media
+from apps.games.models import Game, Media, SystemRequirement
 from apps.misc.models import Badge, Developer, Feature, Genre, Platform, Publisher
 
 
