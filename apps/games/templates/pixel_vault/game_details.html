@@ -10,7 +10,24 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <h1>{{ game.title }}</h1>
+            <div class="container">
+                <h1>{{ game.title }}</h1>
+                <p class="genre">Genre:
+                    {% for genre in game.genres.all %}
+                        <span class="badge">{{ genre.name }}</span>
+                    {% endfor %}
+                </p>
+                <p class="badges">Badges:
+                    {% for badge in game.badges.all %}
+                        <span class="badge">{{ badge.name }}</span>
+                    {% endfor %}
+                </p>
+                <p class="features">Features:
+                    {% for feature in game.features.all %}
+                        <span class="badge">{{ feature.name }}</span>
+                    {% endfor %}
+                </p>
+    </div>
 
             <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -48,10 +65,28 @@
             </div>
         </div>
     </div>
+<div>
+    <h3 class="misc"> Publisher:
+        {% for publisher in game.publishers.all %}
+            <span class="info">{{ publisher.name }}</span>
+        {% endfor %}
+    </h3>
+   <h3 class="misc"> Developer:
+        {% for developer in game.developers.all %}
+            <span class="info">{{ developer.name }}</span>
+        {% endfor %}
+   </h3>
+   <h3 class="misc"> Available on:
+        {% for platform in game.platforms.all %}
+           <span class="info">{{ platform.name }}</span>
+        {% endfor %}
+    </h3>
+</div>
     <div class="container">
     <h3 class="system-requirements">System Requirements:</h3>
     <div class="row">
         {% for system in game.systemrequirement_set.all %}
+
             <div class="col-md-6">
                 <h3>Type: {{ system.type }}</h3>
                 <h3>OS: {{ system.os }}</h3>

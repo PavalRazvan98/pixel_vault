@@ -4,6 +4,7 @@ body {
 
 h1 {
     color: #F0F8FFFF;
+    text-decoration: underline;
 }
 
 h3 {
@@ -45,4 +46,28 @@ p {
     font-size: 20px;
     width: auto;
     display: inline-block;
+}
+
+
+.misc {
+    color: #a7288e;
+}
+
+.container {
+    margin: 20px;
+}
+
+.badge {
+    margin: 5px;
+    background-color: #282c34;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.info {
+    margin: 5px;
+    background-color: #dec415;
+    color: #000000;
+    font-size: 20px;
 }
