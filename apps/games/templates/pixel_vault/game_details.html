@@ -2,8 +2,11 @@
 
 {% load static %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'pixel_vault/game_page.css' %}">
+{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'pixel_vault/game_page.css' %}">
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -30,31 +33,31 @@
         </div>
         <div class="col-md-4">
             <div class="game-pegi">
-                <h3 class="pegi" style="color: crimson"> PEGI {{ game.pegi_rating }}</h3>
+                <h3 class="pegi"> PEGI {{ game.pegi_rating }}</h3>
             </div>
             <div class="game-details">
                 <h3>Description</h3>
                 <p>{{ game.long_description }}</p>
                 <div class="game-price">
                       {% if game.usd_price != 0 %}
-                      <h3 class="card-price" style="color: #ec0808">{{ game.usd_price }} $</h3>
+                      <h3 class="game-price-money">{{ game.usd_price }} $</h3>
                       {% else %}
-                      <h3 class="card-price" style="color: #10d738">Free to play</h3>
+                      <h3 class="game-price-free">Free to play</h3>
                       {% endif %}
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
-    <h1 style="color: gold">System Requirements</h1>
+    <h3 class="system-requirements">System Requirements:</h3>
     <div class="row">
         {% for system in game.systemrequirement_set.all %}
             <div class="col-md-6">
                 <h3>Type: {{ system.type }}</h3>
                 <h3>OS: {{ system.os }}</h3>
                 <h3>Processor: {{ system.processor }}</h3>
-                <h3>Memory: {{ system.memory_mb }} MB</h3>
-                <h3>Storage: {{ system.storage_mb }} MB</h3>
+                <h3>Memory: {{ system.memory }}</h3>
+                <h3>Storage: {{ system.storage }}</h3>
                 <h3>Graphics: {{ system.graphics }}</h3>
             </div>
         {% endfor %}

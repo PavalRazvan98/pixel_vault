@@ -3,15 +3,15 @@ body {
 }
 
 h1 {
-    color: aliceblue;
+    color: #F0F8FFFF;
 }
 
 h3 {
-    color: aliceblue;
+    color: #F0F8FFFF;
 }
 
 p {
-    color: aliceblue
+    color: #F0F8FFFF;
 }
 
 .game-price {
@@ -22,17 +22,23 @@ p {
     text-align: center;
 }
 
-.game-price h3 {
-    color: #28a745;
+.game-price-free {
+    color: #28a745 !important;
     font-weight: bold;
 }
 
-.game-price .btn {
-    margin-top: 10px;
-    width: 100%;
+.game-price-money {
+    color: #ff0000;
+}
+
+.system-requirements {
+    color: #ffdd00;
+    text-decoration: underline;
 }
 
 .pegi {
+
+    color: #ff0000;
     margin-top: 30px;
     padding: 3px;
     text-align: center;
