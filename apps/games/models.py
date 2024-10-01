@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.games.choices import PEGIOptions, TypeOptions
+from apps.games.choices import PEGIOptions, TypeOptions, MediaOptions
 
 
 class Game(models.Model):
@@ -27,6 +27,7 @@ class Game(models.Model):
 
 class Media(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    type = models.CharField(choices=MediaOptions, null=True)
     url = models.URLField(max_length=1000, blank=True)
 
     def __str__(self):

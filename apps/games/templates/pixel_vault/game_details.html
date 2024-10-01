@@ -30,14 +30,25 @@
     </div>
 
             <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                     {% for media in game.media_set.all %}
-                    <div class="carousel-item active">
-                        <img src="{{ media.url }}" class="d-block img-fluid" alt="{{ game.title }}">
-                    </div>
-                    {% endfor %}
-
-                </div>
+    <div class="carousel-inner">
+        {% for media in game.media_set.all %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                {% if media.type == "photo" %}
+                    <img src="{{ media.url }}" class="d-block img-fluid" alt="{{ game.title }}">
+                {% elif media.type == "video" %}
+            <div class="video-container">
+                <iframe class="d-block w-100 h-100"
+                    src="https://www.youtube.com/embed/{{ media.url|slice:'-11:' }}"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
