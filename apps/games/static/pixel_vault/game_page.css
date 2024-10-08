@@ -47,6 +47,7 @@ p {
     background-color: #f9f9f9;
     border-radius: 10px;
     text-align: center;
+    margin-bottom: 60px;
 }
 
 .game-price-free {
@@ -76,7 +77,8 @@ p {
 
 
 .misc {
-    color: #a7288e;
+    margin: 10px;
+    color: #12d0bf;
 }
 
 .container {
@@ -96,4 +98,31 @@ p {
     background-color: #dec415;
     color: #000000;
     font-size: 20px;
+}
+
+.comments-section {
+    margin-top: 30px;
+}
+
+.user{
+    color: #00dd00;
+}
+
+.comment {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.comments-section h3 {
+    margin-bottom: 20px;
+    color: #ff7f50;
 }

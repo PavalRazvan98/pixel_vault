@@ -1,0 +1,25 @@
+{% extends 'pixel_vault/navbar.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color: #00dd00">Most Played Games</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Game Name</th>
+                <th>Time Played</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in games %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{% url 'game-details' game.pk %}">{{ game.title }}</a></td>
+                <td>{{ game.total_played_time_formatted }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

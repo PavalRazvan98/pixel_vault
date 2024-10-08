@@ -12,18 +12,19 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark bg-gradient">
-        <a class="navbar-brand custom-font" href="{% url 'homepage' %}">Pixel Vault</a>
+        <a class="navbar-brand custom-font" href="{% url "homepage" %}">Pixel Vault</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a  class="btn btn-outline-light">Sign In</a>
+                    <a class="navbar-brand custom-font-most" href="{% url "most-played" %}">  Most played games</a>
                 </li>
                 <li class="nav-item">
-                    <a  class="btn btn-outline-light">Sign Up</a>
+                    <a class="navbar-brand custom-font-most" href="{% url "most-appreciated" %}">  Best rated games</a>
                 </li>
             </ul>
         </div>
@@ -32,4 +33,4 @@
     {% block content %}
     {% endblock %}
 </body>
-</html>
+
