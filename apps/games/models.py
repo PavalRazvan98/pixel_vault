@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.games.choices import PEGIOptions, TypeOptions, MediaOptions
+from apps.games.choices import MediaOptions, PEGIOptions, TypeOptions
 
 
 class Game(models.Model):

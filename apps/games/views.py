@@ -19,7 +19,7 @@ class DetailViewGame(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['Ratings'] = Rating.objects.filter(game=self.object)
+        context["Ratings"] = Rating.objects.filter(game=self.object)
         return context
 
 
@@ -29,7 +29,7 @@ class MostAppreciatedGamesView(generic.ListView):
     context_object_name = "games"
 
     def get_queryset(self):
-        return Game.objects.annotate(average_score=Avg('rating__score')).order_by('-average_score')
+        return Game.objects.annotate(average_score=Avg("rating__score")).order_by("-average_score")
 
 
 class MostPlayedGamesView(TemplateView):
@@ -38,17 +38,16 @@ class MostPlayedGamesView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        most_played_games = (Game.objects.annotate(
-                total_played_time=Sum('session__time_play')
-            )
+        most_played_games = (
+            Game.objects.annotate(total_played_time=Sum("session__time_play"))
             .filter(total_played_time__isnull=False)
-            .order_by('-total_played_time')
+            .order_by("-total_played_time")
         )
 
         for game in most_played_games:
             game.total_played_time_formatted = self.format_play_time(game.total_played_time)
 
-        context['games'] = most_played_games
+        context["games"] = most_played_games
         return context
 
     def format_play_time(self, play_time):

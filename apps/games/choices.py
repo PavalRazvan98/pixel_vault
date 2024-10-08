@@ -13,8 +13,8 @@ class PEGIOptions(models.IntegerChoices):
     P_16 = 16, "PEGI 16"
     P_18 = 18, "PEGI 18"
 
+
 class MediaOptions(models.TextChoices):
     photo = "photo"
     video = "video"
     documents = "documents"
-
