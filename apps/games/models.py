@@ -27,7 +27,7 @@ class Game(models.Model):
 
 class Media(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    kind = models.CharField(choices=MediaOptions, null=True)
+    kind = models.CharField(choices=MediaOptions)
     url = models.URLField(max_length=1000, blank=True)
 
     def __str__(self):
