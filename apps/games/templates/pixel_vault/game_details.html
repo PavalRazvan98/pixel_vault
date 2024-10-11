@@ -1,0 +1,128 @@
+{% extends 'pixel_vault/navbar.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'pixel_vault/game_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container">
+                <h1>{{ game.title }}</h1>
+                <p class="genre">Genre:
+                    {% for genre in game.genres.all %}
+                        <span class="badge">{{ genre.name }}</span>
+                    {% endfor %}
+                </p>
+                <p class="badges">Badges:
+                    {% for badge in game.badges.all %}
+                        <span class="badge">{{ badge.name }}</span>
+                    {% endfor %}
+                </p>
+                <p class="features">Features:
+                    {% for feature in game.features.all %}
+                        <span class="badge">{{ feature.name }}</span>
+                    {% endfor %}
+                </p>
+        </div>
+
+            <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for media in game.media_set.all %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                {% if media.kind == "photo" %}
+                    <img src="{{ media.url }}" class="d-block img-fluid" alt="{{ game.title }}">
+                {% elif media.kind == "video" %}
+            <div class="video-container">
+                <iframe class="d-block w-100 h-100"
+                    src="https://www.youtube.com/embed/{{ media.url|slice:'-11:' }}"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="game-pegi">
+                <h3 class="pegi"> PEGI {{ game.pegi_rating }}</h3>
+            </div>
+            <div class="game-details">
+                <h3>Description</h3>
+                <p>{{ game.long_description }}</p>
+                <div class="game-price">
+                      {% if game.usd_price != 0 %}
+                      <h3 class="game-price-money">{{ game.usd_price }} $</h3>
+                      {% else %}
+                      <h3 class="game-price-free">Free to play</h3>
+                      {% endif %}
+                </div>
+                <div>
+                    <h3 class="misc"> Publisher:
+                        {% for publisher in game.publishers.all %}
+                            <span class="info">{{ publisher.name }}</span>
+                        {% endfor %}
+                    </h3>
+                   <h3 class="misc"> Developer:
+                        {% for developer in game.developers.all %}
+                            <span class="info">{{ developer.name }}</span>
+                        {% endfor %}
+                   </h3>
+                   <h3 class="misc"> Available on:
+                        {% for platform in game.platforms.all %}
+                           <span class="info">{{ platform.name }}</span>
+                        {% endfor %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+    <h3 class="system-requirements">System Requirements:</h3>
+    <div class="row">
+        {% for system in game.systemrequirement_set.all %}
+
+            <div class="col-md-6">
+                <h3>Type: {{ system.type }}</h3>
+                <h3>OS: {{ system.os }}</h3>
+                <h3>Processor: {{ system.processor }}</h3>
+                <h3>Memory: {{ system.memory }}</h3>
+                <h3>Storage: {{ system.storage }}</h3>
+                <h3>Graphics: {{ system.graphics }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+
+    </div>
+<div class="container">
+    <h3>Comments:</h3>
+    <div class="comments-section">
+        {% for com in Ratings %}
+            <div class="comment">
+                <small class="user">{{ com.user.username }} - {{ com.score }}/5</small>
+                <p>{{ com.content }}</p>
+                <small>Posted on : {{ com.submitted_review }}</small>
+            </div>
+        {% empty %}
+            <p>No comments available for this game.</p>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}

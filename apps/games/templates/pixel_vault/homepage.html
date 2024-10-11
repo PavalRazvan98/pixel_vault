@@ -1,0 +1,32 @@
+{% extends 'pixel_vault/navbar.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% for game in all_games %}
+        <div class="col-md-4">
+            <a href="{% url 'game-details' game.pk %}" style="text-decoration: none; color: inherit;">
+                <div class="card mb-4" style="width: 18rem;">
+                {% for media in game.media_set.all %}
+                  {% if forloop.first %}
+                    <img src="{{ media.url }}" style="height: 200px; object-fit: cover;">
+                  {% endif %}
+                {% empty %}
+                {% endfor %}
+                  <div class="card-body">
+                      <p class="card-pegi" style="color: #FF0000FF;">Pegi rating: {{ game.pegi_rating }}</p>
+                      <p class="card-title" style="color: #7005DBFF;">{{ game.title }}</>
+                      <p class="card-text" style="color: #000000FF">{{ game.short_description }}</p>
+                      {% if game.usd_price != 0 %}
+                      <p class="card-price" style="color: #000000FF">{{ game.usd_price }} $</p>
+                      {% else %}
+                      <p class="card-price" style="color: #10d738">Free to play</p>
+                      {% endif %}
+                  </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

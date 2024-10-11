@@ -1,5 +1,5 @@
 from .feedback import RatingFactory
-from .games import GameFactory, SystemRequirementFactory
+from .games import GameFactory, MediaFactory, SystemRequirementFactory
 from .interactions import SessionFactory
 from .misc import BadgeFactory, DeveloperFactory, FeatureFactory, GenreFactory, PlatformFactory, PublisherFactory
 
@@ -14,6 +14,7 @@ __all__ = (
     # Games
     "GameFactory",
     "SystemRequirementFactory",
+    "MediaFactory",
     # Rating
     "RatingFactory",
     # Interaction

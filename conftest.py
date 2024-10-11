@@ -6,6 +6,7 @@ from fixtures.factories import (
     FeatureFactory,
     GameFactory,
     GenreFactory,
+    MediaFactory,
     PlatformFactory,
     PublisherFactory,
     RatingFactory,
@@ -52,6 +53,11 @@ def game_factory():
 @pytest.fixture(scope="session")
 def system_requirement_factory():
     return SystemRequirementFactory
+
+
+@pytest.fixture(scope="session")
+def media_factory():
+    return MediaFactory
 
 
 @pytest.fixture(scope="session")
@@ -133,6 +139,16 @@ def game(game_factory):
 @pytest.fixture
 def games(game_factory):
     return game_factory.create_batch(3)
+
+
+@pytest.fixture
+def media(media_factory):
+    return media_factory.create()
+
+
+@pytest.fixture
+def medias(media_factory):
+    return media_factory.create_batch(3)
 
 
 @pytest.fixture
